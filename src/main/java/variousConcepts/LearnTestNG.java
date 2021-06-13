@@ -85,11 +85,12 @@ public class LearnTestNG {
 			driver.manage().deleteAllCookies();
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		}
-/*		
-		@Test
+		
+		@Test(priority=1)
 		public void loginTest() {
 			System.out.println(driver.getTitle());
-			Assert.assertEquals("Login page not found!!", "Login - iBilling1", driver.getTitle());
+			Assert.assertEquals(driver.getTitle(), "Login - iBilling", "Login page not found!!");
+		
 			
 			
 			// Storing Web Element
@@ -116,8 +117,8 @@ public class LearnTestNG {
 			
 			WebElement customer_button_element = driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[3]/a/span[1]"));
 			WebElement add_customer_button_element = driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[3]/ul/li[1]/a"));
-			
 			WebElement dashboard_button_element = driver.findElement(By.linkText("Dashboard"));	
+			
 			String actualdashboard = dashboard_button_element.getText();	
 			Assert.assertEquals(actualdashboard, "Dashboard", "Dashboard page not found!!");
 
@@ -129,8 +130,8 @@ public class LearnTestNG {
 			add_customer_button_element.click(); 
 			
 			WebElement fullname_field_element = driver.findElement(By.xpath("//input[@id='account']"));
-//			WebElement dropdown_field_element = driver.findElement(By.xpath("//select[@id='cid']"));
-			WebElement dropdown_field_element = driver.findElement(By.xpath("//select[@id=\"cid\"]"));
+			WebElement dropdown_field_element = driver.findElement(By.xpath("//select[@id='cid']"));
+//			WebElement dropdown_field_element = driver.findElement(By.xpath("//select[@id=\"cid\"]"));
 			WebElement email_field_element = driver.findElement(By.xpath("//input[@id='email']"));
 			WebElement phone_field_element = driver.findElement(By.xpath("//input[@id='phone']"));
 			WebElement address_field_element = driver.findElement(By.xpath("//input[@id='address']"));
@@ -142,17 +143,17 @@ public class LearnTestNG {
 			WebElement save_field_element = driver.findElement(By.xpath("//*[@id=\"submit\"]"));
 			
 			
-			
+		
 			
 			
 		}
 
 	
-*/
+
 	
 
-@Test
-public void addcustomerTest(){
+@Test(priority=2)
+public void addcustomerTest(WebElement WebElement){
 	
 // Storing Element:  By library
 	
@@ -233,8 +234,7 @@ public void addcustomerTest(){
 	
 	
 	driver.findElement(email_field_locator).sendKeys(generatedNo+ emailAddress);
-//	waitForElement(driver ,5, dashboard_field_locator);
-//	dropDown(WebElement dashboard_button_element );
+	
 	driver.findElement(phone_field_locator).sendKeys(phoneNumber+generatedNo);
 	driver.findElement(address_field_locator).sendKeys(generatedNo+"  "+streetAddress);
 	driver.findElement(city_field_locator).sendKeys(cityName);
@@ -247,17 +247,24 @@ public void waitForElement(WebDriver driver, int timeInSeconds, By locator) {
 	wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
 }
+
 /*
-public void dropDown(WebElement companyname){
-	WebElement dropdown_field_element  = null;
-	Select sel = new Select(dropdown_field_element);
-	sel.getOptions();
-	List<WebElement> webelement = sel.getOptions();
-	for(WebElement i: webelement);
-	WebElement i = null;
-	System.out.println(i.getText());
+@Test(priority=3)
+public void dropDown(WebElement name) {
+
+By dropdown_field_locator = null;
+List<WebElement> mylist = driver.findElements(dropdown_field_locator);
+System.out.println("Size of the list is : " +mylist.size()); 
+for(int i = 0;i<mylist.size();i++){
+String companyName = mylist.get(i).getText();
+System.out.println( companyName); 
+System.out.println("index of webelements in increasing order is : " + i + companyName); 
+
 }
 
+
+
+}
 /*
 @AfterMethod
 public void tearDown() throws InterruptedException {
@@ -265,8 +272,8 @@ public void tearDown() throws InterruptedException {
 	driver.close(); // kills the process of the web driver
 //	driver.quit();// actually closes the browser window
 }
-*/
 
+*/
 }
 
 
