@@ -5,6 +5,7 @@ public class TestGit2 {
 		printMe1();
 		printMe2();
 		printMe();
+		printMe3();
 		}
 	public static void printMe() {
 		System.out.println("Test Git");
@@ -17,5 +18,8 @@ public class TestGit2 {
 		System.out.println("Test Git2");
 	}
 
+	public static void printMe3() {
+		System.out.println("Test Git2");
+	}
 
 }
